@@ -3,7 +3,8 @@ import mapboxgl from 'mapbox-gl';
 
 import { Container } from './Container/Container.styled';
 
-mapboxgl.accessToken = process.env.REACT_APP_MAP_ACCESS_KEY;
+mapboxgl.accessToken =
+  'pk.eyJ1IjoiaWhvcmthcmVuIiwiYSI6ImNscmtraGp5NjA5ZGQya3F6bzNhcm5wdGMifQ.2TIRinxIjYANsJUWnyWkBg';
 
 export const App = () => {
   const mapContainer = useRef(null);
@@ -30,8 +31,6 @@ export const App = () => {
       setZoom(map.current.getZoom().toFixed(2));
     });
   });
-
-  console.log(process.env.REACT_APP_MAP_ACCESS_KEY);
 
   return (
     <Container>
