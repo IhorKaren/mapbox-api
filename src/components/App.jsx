@@ -1,9 +1,9 @@
 import { useRef, useEffect, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
+
 import { Container } from './Container/Container.styled';
 
-mapboxgl.accessToken =
-  'pk.eyJ1IjoiaWhvcmthcmVuIiwiYSI6ImNscmtraGp5NjA5ZGQya3F6bzNhcm5wdGMifQ.2TIRinxIjYANsJUWnyWkBg';
+mapboxgl.accessToken = process.env.REACT_APP_MAP_ACCESS_KEY;
 
 export const App = () => {
   const mapContainer = useRef(null);
@@ -23,10 +23,21 @@ export const App = () => {
       center: [lng, lat],
       zoom: zoom,
     });
+
+    map.current.on('move', () => {
+      setLng(map.current.getCenter().lng.toFixed(4));
+      setLat(map.current.getCenter().lat.toFixed(4));
+      setZoom(map.current.getZoom().toFixed(2));
+    });
   });
+
+  console.log(process.env.REACT_APP_MAP_ACCESS_KEY);
 
   return (
     <Container>
+      <div className="sidebar">
+        Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
+      </div>
       <div ref={mapContainer} className="map-container" />
     </Container>
   );
