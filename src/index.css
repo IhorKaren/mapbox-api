@@ -17,7 +17,6 @@ code {
 .map-container {
   width: 1600px;
   height: 900px;
-  margin-left: auto;
 }
 
 .sidebar {
@@ -31,4 +30,4 @@ code {
   right: 0;
   margin: 12px;
   border-radius: 4px;
-  }
+}
