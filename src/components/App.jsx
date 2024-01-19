@@ -8,8 +8,11 @@ mapboxgl.accessToken =
 export const App = () => {
   const mapContainer = useRef(null);
   const map = useRef(null);
+  // eslint-disable-next-line no-unused-vars
   const [lng, setLng] = useState(17.1077);
+  // eslint-disable-next-line no-unused-vars
   const [lat, setLat] = useState(48.1486);
+  // eslint-disable-next-line no-unused-vars
   const [zoom, setZoom] = useState(15);
 
   useEffect(() => {
