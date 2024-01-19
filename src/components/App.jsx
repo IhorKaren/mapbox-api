@@ -1,5 +1,5 @@
-import Map, { Marker, Source, Layer } from 'react-map-gl';
-import { useState, useRef } from 'react';
+import Map, { Marker } from 'react-map-gl';
+import { useRef } from 'react';
 import { Container } from './Container/Container.styled';
 
 const data = [
