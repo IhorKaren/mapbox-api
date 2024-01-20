@@ -1,5 +1,4 @@
-import { useState } from "react";
-import Map, { Marker } from "react-map-gl";
+import Map, { Marker, NavigationControl, ScaleControl } from "react-map-gl";
 import "./Map.css";
 import geoJson from "../../data/houses_of _bratislava.json";
 import MarkerComponent from "../Marker/Marker";
@@ -32,6 +31,8 @@ const MapComponent = () => {
           />
         </Marker>
       ))}
+      <NavigationControl />
+      <ScaleControl />
     </Map>
   );
 };

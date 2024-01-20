@@ -16,7 +16,7 @@ const MarkerComponent = ({ latitude, longitude, price, address }) => {
       </button>
 
       {isPopUpOpen && (
-        <Popup latitude={latitude} longitude={longitude} closeOnClick={false}>
+        <Popup latitude={latitude} longitude={longitude} closeOnClick={false} offset={10}>
           {address}
         </Popup>
       )}
