@@ -2,28 +2,28 @@
   "features": [
     {
       "address": "Námestie SNP 1, 811 01 Bratislava, Slovensko",
-      "latitude": 48.145974,
-      "longitude": 17.107218
+      "latitude": 48.1455,
+      "longitude": 17.1071
     },
     {
       "address": "Hviezdoslavovo námestie 1, 811 01 Bratislava, Slovensko",
-      "latitude": 48.145934,
-      "longitude": 17.107315
+      "latitude": 48.145,
+      "longitude": 17.107
     },
     {
       "address": "Nábrežie Dunaja 1, 811 01 Bratislava, Slovensko",
-      "latitude": 48.144715,
-      "longitude": 17.107934
+      "latitude": 48.143,
+      "longitude": 17.1079
     },
     {
       "address": "Panská ulica 2, 811 01 Bratislava, Slovensko",
-      "latitude": 48.145965,
-      "longitude": 17.107325
+      "latitude": 48.146,
+      "longitude": 17.1073
     },
     {
       "address": "Mlynské nivy 1, 811 01 Bratislava, Slovensko",
-      "latitude": 48.145565,
-      "longitude": 17.108025
+      "latitude": 48.1465,
+      "longitude": 17.108
     }
   ],
 
