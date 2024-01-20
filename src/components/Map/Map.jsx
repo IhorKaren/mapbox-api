@@ -6,7 +6,7 @@ import MarkerComponent from "../Marker/Marker";
 const MapComponent = () => {
   return (
     <Map
-      mapboxAccessToken="pk.eyJ1IjoiaWhvcmthcmVuIiwiYSI6ImNscmtraGp5NjA5ZGQya3F6bzNhcm5wdGMifQ.2TIRinxIjYANsJUWnyWkBg"
+      mapboxAccessToken={process.env.REACT_APP_MAP_ACCESS_KEY}
       initialViewState={{
         longitude: 17.107,
         latitude: 48.145,
