@@ -1,6 +1,5 @@
 {
   "private": true,
-  "homepage": "https://ihorkaren.github.io/mapbox-api/",
   "dependencies": {
     "mapbox-gl": "^2.15.0",
     "react": "^18.2.0",
