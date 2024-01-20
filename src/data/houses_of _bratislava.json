@@ -29,6 +29,120 @@
       "address": "Mlynské nivy 1, 811 01 Bratislava, Slovensko",
       "latitude": 48.1465,
       "longitude": 17.108
+    },
+    {
+      "price": "$ 480k",
+      "address": "Námestie SNP 2, 811 01 Bratislava, Slovensko",
+      "latitude": 48.146,
+      "longitude": 17.109
+    },
+    {
+      "price": "$ 550k",
+      "address": "Hviezdoslavovo námestie 2, 811 01 Bratislava, Slovensko",
+      "latitude": 48.1455,
+      "longitude": 17.1085
+    },
+    {
+      "price": "$ 530k",
+      "address": "Nábrežie Dunaja 2, 811 01 Bratislava, Slovensko",
+      "latitude": 48.1435,
+      "longitude": 17.1082
+    },
+    {
+      "price": "$ 620k",
+      "address": "Panská ulica 3, 811 01 Bratislava, Slovensko",
+      "latitude": 48.147,
+      "longitude": 17.1075
+    },
+    {
+      "price": "$ 590k",
+      "address": "Mlynské nivy 2, 811 01 Bratislava, Slovensko",
+      "latitude": 48.1475,
+      "longitude": 17.107
+    },
+    {
+      "price": "$ 510k",
+      "address": "Námestie SNP 3, 811 01 Bratislava, Slovensko",
+      "latitude": 48.144,
+      "longitude": 17.1095
+    },
+    {
+      "price": "$ 580k",
+      "address": "Hviezdoslavovo námestie 3, 811 01 Bratislava, Slovensko",
+      "latitude": 48.1445,
+      "longitude": 17.109
+    },
+    {
+      "price": "$ 590k",
+      "address": "Nábrežie Dunaja 3, 811 01 Bratislava, Slovensko",
+      "latitude": 48.1445,
+      "longitude": 17.108
+    },
+    {
+      "price": "$ 640k",
+      "address": "Panská ulica 4, 811 01 Bratislava, Slovensko",
+      "latitude": 48.1475,
+      "longitude": 17.1085
+    },
+    {
+      "price": "$ 620k",
+      "address": "Mlynské nivy 3, 811 01 Bratislava, Slovensko",
+      "latitude": 48.148,
+      "longitude": 17.1075
+    },
+    {
+      "price": "$ 510k",
+      "address": "Námestie SNP 4, 811 01 Bratislava, Slovensko",
+      "latitude": 48.1455,
+      "longitude": 17.1105
+    },
+    {
+      "price": "$ 580k",
+      "address": "Hviezdoslavovo námestie 4, 811 01 Bratislava, Slovensko",
+      "latitude": 48.146,
+      "longitude": 17.1105
+    },
+    {
+      "price": "$ 590k",
+      "address": "Nábrežie Dunaja 4, 811 01 Bratislava, Slovensko",
+      "latitude": 48.144,
+      "longitude": 17.109
+    },
+    {
+      "price": "$ 630k",
+      "address": "Panská ulica 5, 811 01 Bratislava, Slovensko",
+      "latitude": 48.1485,
+      "longitude": 17.108
+    },
+    {
+      "price": "$ 610k",
+      "address": "Mlynské nivy 4, 811 01 Bratislava, Slovensko",
+      "latitude": 48.1485,
+      "longitude": 17.107
+    },
+    {
+      "price": "$ 510k",
+      "address": "Námestie SNP 5, 811 01 Bratislava, Slovensko",
+      "latitude": 48.1465,
+      "longitude": 17.1115
+    },
+    {
+      "price": "$ 580k",
+      "address": "Hviezdoslavovo námestie 5, 811 01 Bratislava, Slovensko",
+      "latitude": 48.147,
+      "longitude": 17.111
+    },
+    {
+      "price": "$ 590k",
+      "address": "Nábrežie Dunaja 5, 811 01 Bratislava, Slovensko",
+      "latitude": 48.145,
+      "longitude": 17.1105
+    },
+    {
+      "price": "$ 650k",
+      "address": "Panská ulica 6, 811 01 Bratislava, Slovensko",
+      "latitude": 48.149,
+      "longitude": 17.1085
     }
   ],
 
