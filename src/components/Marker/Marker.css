@@ -10,7 +10,7 @@
 
 .price {
   position: absolute;
-  top: -100%;
+  bottom: 100%;
   left: 16px;
   display: flex;
   width: max-content;
@@ -23,7 +23,6 @@
 
 .popUp {
   position: absolute;
-  z-index: 6;
   bottom: 100%;
   width: 100px;
   height: max-content;

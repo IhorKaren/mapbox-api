@@ -1,8 +1,8 @@
 import React from "react";
-import Map from "./Map/Map";
+import MapComponent from "./Map/Map";
 
 function App() {
-  return <Map />;
+  return <MapComponent />;
 }
 
 export default App;

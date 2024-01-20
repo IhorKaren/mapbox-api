@@ -1,45 +1,39 @@
-import React, { useRef, useEffect } from "react";
-import mapboxgl from "mapbox-gl";
+import { useState } from "react";
+import Map, { Marker } from "react-map-gl";
 import "./Map.css";
 import geoJson from "../../data/houses_of _bratislava.json";
-import { createRoot } from "react-dom/client";
-import Marker from "../Marker/Marker";
+import MarkerComponent from "../Marker/Marker";
 
-mapboxgl.accessToken =
-  "pk.eyJ1IjoiaWhvcmthcmVuIiwiYSI6ImNscmtraGp5NjA5ZGQya3F6bzNhcm5wdGMifQ.2TIRinxIjYANsJUWnyWkBg";
-
-const Map = () => {
-  const mapContainerRef = useRef(null);
-
-  useEffect(() => {
-    const map = new mapboxgl.Map({
-      container: mapContainerRef.current,
-      style: "mapbox://styles/mapbox/streets-v12",
-      center: [17.107, 48.145],
-      zoom: 16,
-      minZoom: 14,
-    });
-
-    geoJson.features.forEach((feature) => {
-      const ref = React.createRef();
-
-      ref.current = document.createElement("div");
-
-      createRoot(ref.current).render(
-        <Marker price={feature.price} address={feature.address} />
-      );
-
-      new mapboxgl.Marker(ref.current)
-        .setLngLat({ lng: feature.longitude, lat: feature.latitude })
-        .addTo(map);
-    });
-
-    map.addControl(new mapboxgl.NavigationControl(), "top-right");
-
-    return () => map.remove();
-  }, []);
-
-  return <div className="map-container" ref={mapContainerRef} />;
+const MapComponent = () => {
+  return (
+    <Map
+      mapboxAccessToken="pk.eyJ1IjoiaWhvcmthcmVuIiwiYSI6ImNscmtraGp5NjA5ZGQya3F6bzNhcm5wdGMifQ.2TIRinxIjYANsJUWnyWkBg"
+      initialViewState={{
+        longitude: 17.107,
+        latitude: 48.145,
+        zoom: 16,
+        minZoom: 14,
+      }}
+      mapStyle="mapbox://styles/mapbox/streets-v12"
+      style={{ width: "100%", height: 900 }}
+    >
+      {geoJson.features.map((el) => (
+        <Marker
+          key={el.address}
+          longitude={el.longitude}
+          latitude={el.latitude}
+          anchor="bottom"
+        >
+          <MarkerComponent
+            latitude={el.latitude}
+            longitude={el.longitude}
+            price={el.price}
+            address={el.address}
+          />
+        </Marker>
+      ))}
+    </Map>
+  );
 };
 
-export default Map;
+export default MapComponent;

@@ -1,7 +1,8 @@
 import { useState } from "react";
+import { Popup } from "react-map-gl";
 import "./Marker.css";
 
-const Marker = ({ price, address }) => {
+const MarkerComponent = ({ latitude, longitude, price, address }) => {
   const [isPopUpOpen, setIsPopUpOpen] = useState(false);
 
   return (
@@ -10,22 +11,17 @@ const Marker = ({ price, address }) => {
         className="marker"
         type="button"
         onClick={() => setIsPopUpOpen(!isPopUpOpen)}
-      ></button>
-      {!isPopUpOpen && <div className="price">{price}</div>}
+      >
+        <div className="price">{price}</div>
+      </button>
+
       {isPopUpOpen && (
-        <div className="popUp">
-          <button
-            className="popUpClose"
-            type="button"
-            onClick={() => setIsPopUpOpen(false)}
-          >
-            x
-          </button>{" "}
+        <Popup latitude={latitude} longitude={longitude} closeOnClick={false}>
           {address}
-        </div>
+        </Popup>
       )}
     </>
   );
 };
 
-export default Marker;
+export default MarkerComponent;
