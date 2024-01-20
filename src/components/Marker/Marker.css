@@ -1,0 +1,44 @@
+.marker {
+  position: relative;
+  width: 20px;
+  height: 20px;
+
+  border: 3px solid #ffffff;
+  border-radius: 50%;
+  background-color: #4264fb;
+}
+
+.price {
+  position: absolute;
+  top: -100%;
+  left: 16px;
+  display: flex;
+  width: max-content;
+  padding: 2px 4px;
+
+  border-radius: 12px;
+
+  background-color: #ffffff;
+}
+
+.popUp {
+  position: absolute;
+  z-index: 6;
+  bottom: 100%;
+  width: 100px;
+  height: max-content;
+  padding: 20px 4px 2px 4px;
+
+  border-radius: 12px;
+
+  background-color: #ffffff;
+
+  cursor: auto;
+}
+
+.popUpClose {
+  position: absolute;
+  top: 2px;
+  right: 8px;
+  font-size: 16px;
+}

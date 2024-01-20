@@ -1,26 +1,31 @@
 {
   "features": [
     {
+      "price": "$ 450k",
       "address": "Námestie SNP 1, 811 01 Bratislava, Slovensko",
       "latitude": 48.1455,
       "longitude": 17.1071
     },
     {
+      "price": "$ 520k",
       "address": "Hviezdoslavovo námestie 1, 811 01 Bratislava, Slovensko",
       "latitude": 48.145,
       "longitude": 17.107
     },
     {
+      "price": "$ 510k",
       "address": "Nábrežie Dunaja 1, 811 01 Bratislava, Slovensko",
       "latitude": 48.143,
       "longitude": 17.1079
     },
     {
+      "price": "$ 590k",
       "address": "Panská ulica 2, 811 01 Bratislava, Slovensko",
       "latitude": 48.146,
       "longitude": 17.1073
     },
     {
+      "price": "$ 600k",
       "address": "Mlynské nivy 1, 811 01 Bratislava, Slovensko",
       "latitude": 48.1465,
       "longitude": 17.108
