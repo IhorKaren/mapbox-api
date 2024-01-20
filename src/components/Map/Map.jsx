@@ -2,9 +2,6 @@ import React, { useRef, useEffect } from "react";
 import mapboxgl from "mapbox-gl";
 import "./Map.css";
 import geoJson from "../../data/houses_of _bratislava.json";
-import MapboxWorker from 'mapbox-gl/dist/mapbox-gl-csp-worker';
-
-mapboxgl.workerClass = MapboxWorker.default;
 
 mapboxgl.accessToken =
   "pk.eyJ1IjoiaWhvcmthcmVuIiwiYSI6ImNscmtraGp5NjA5ZGQya3F6bzNhcm5wdGMifQ.2TIRinxIjYANsJUWnyWkBg";
