@@ -1,7 +1,13 @@
-import Map, { Marker, NavigationControl, ScaleControl } from "react-map-gl";
+import Map, {
+  Marker,
+  NavigationControl,
+  GeolocateControl,
+  ScaleControl,
+} from "react-map-gl";
 import "./Map.css";
 import geoJson from "../../data/houses_of_bratislava.json";
 import MarkerComponent from "../Marker/Marker";
+import Geocoder from "components/Geocoder/Geocoder";
 
 const MapComponent = () => {
   const change = (e) => {
@@ -15,11 +21,9 @@ const MapComponent = () => {
         longitude: 17.107,
         latitude: 48.145,
         zoom: 16,
-        minZoom: 14,
       }}
       doubleClickZoom={false}
-      onMove={change}
-      onMouseDown={change}
+      // onMove={change}
       mapStyle="mapbox://styles/ihorkaren/clrngnxkz005x01pjf3ukeup4"
       style={{ width: "100%", height: 900 }}
     >
@@ -38,6 +42,8 @@ const MapComponent = () => {
           />
         </Marker>
       ))}
+      <Geocoder position="top-left" />
+      <GeolocateControl />
       <NavigationControl />
       <ScaleControl />
     </Map>
