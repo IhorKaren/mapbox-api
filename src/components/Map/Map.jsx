@@ -3,7 +3,7 @@ import Map, {
   NavigationControl,
   GeolocateControl,
   ScaleControl,
-} from "react-map-gl/maplibre";
+} from "react-map-gl";
 import "./Map.css";
 import geoJson from "../../data/houses_of_bratislava.json";
 import MarkerComponent from "../Marker/Marker";
@@ -17,13 +17,15 @@ const MapComponent = () => {
 
   return (
     <Map
+      mapboxAccessToken={process.env.REACT_APP_MAP_ACCESS_KEY}
       initialViewState={{
         longitude: 17.107,
         latitude: 48.145,
-        zoom: 14,
+        zoom: 16,
       }}
       doubleClickZoom={false}
-      mapStyle="https://api.maptiler.com/maps/streets-v2/style.json?key=jkyOg7nIBllWn5tcjnsS"
+      // onMove={change}
+      mapStyle="mapbox://styles/ihorkaren/clrngnxkz005x01pjf3ukeup4"
       style={{ width: "100%", height: 900 }}
     >
       {geoJson.features.map((el) => (
