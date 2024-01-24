@@ -3,28 +3,27 @@ import Map, {
   NavigationControl,
   GeolocateControl,
   ScaleControl,
-} from "react-map-gl";
+} from "react-map-gl/maplibre";
 import "./Map.css";
 import geoJson from "../../data/houses_of_bratislava.json";
 import MarkerComponent from "../Marker/Marker";
 import Geocoder from "components/Geocoder/Geocoder";
 
 const MapComponent = () => {
+  // eslint-disable-next-line no-unused-vars
   const change = (e) => {
     console.log(e);
   };
 
   return (
     <Map
-      mapboxAccessToken={process.env.REACT_APP_MAP_ACCESS_KEY}
       initialViewState={{
         longitude: 17.107,
         latitude: 48.145,
-        zoom: 16,
+        zoom: 14,
       }}
       doubleClickZoom={false}
-      // onMove={change}
-      mapStyle="mapbox://styles/ihorkaren/clrngnxkz005x01pjf3ukeup4"
+      mapStyle="https://api.maptiler.com/maps/streets-v2/style.json?key=jkyOg7nIBllWn5tcjnsS"
       style={{ width: "100%", height: 900 }}
     >
       {geoJson.features.map((el) => (

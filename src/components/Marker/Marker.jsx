@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Popup } from "react-map-gl";
+import { Popup } from "react-map-gl/maplibre";
 import "./Marker.css";
 
 const MarkerComponent = ({ latitude, longitude, price, address }) => {
@@ -16,7 +16,14 @@ const MarkerComponent = ({ latitude, longitude, price, address }) => {
       </button>
 
       {isPopUpOpen && (
-        <Popup latitude={latitude} longitude={longitude} closeButton closeOnClick={false} offset={10} maxWidth="100px">
+        <Popup
+          latitude={latitude}
+          longitude={longitude}
+          closeButton
+          closeOnClick={false}
+          offset={10}
+          maxWidth="100px"
+        >
           {address}
         </Popup>
       )}
