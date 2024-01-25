@@ -10,7 +10,9 @@ function App() {
       try {
         const response = await getAllAdverts();
 
-        setData([...response.filter((el) => el.geoPoints)]);
+        const filteredArray = response.filter((el) => el.geoPoints);
+
+        setData([...filteredArray]);
 
         return;
       } catch (error) {
@@ -20,8 +22,6 @@ function App() {
 
     getAdvertsData();
   }, []);
-
-  console.log(data);
 
   return <MapComponent data={data} />;
 }
