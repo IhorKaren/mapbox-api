@@ -3,6 +3,7 @@
   "dependencies": {
     "@mapbox/mapbox-gl-geocoder": "^5.0.2",
     "@maplibre/maplibre-gl-geocoder": "^1.5.0",
+    "axios": "^1.6.6",
     "maplibre-gl": "^3.6.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
