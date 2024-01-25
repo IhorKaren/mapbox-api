@@ -10,9 +10,15 @@ function App() {
       try {
         const response = await getAllAdverts();
 
-        const filteredArray = response.filter((el) => el.geoPoints);
+        if (response) {
+          const filteredArray = await response.filter((el) => el.geoPoints);
 
-        setData([...filteredArray]);
+          setData([...filteredArray]);
+
+          return;
+        }
+
+        setData([]);
 
         return;
       } catch (error) {

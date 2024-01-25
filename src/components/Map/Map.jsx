@@ -5,7 +5,6 @@ import Map, {
   ScaleControl,
 } from "react-map-gl/maplibre";
 import "./Map.css";
-import geoJson from "../../data/houses_of_bratislava.json";
 import MarkerComponent from "../Marker/Marker";
 import Geocoder from "components/Geocoder/Geocoder";
 
