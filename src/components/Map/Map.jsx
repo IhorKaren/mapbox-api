@@ -1,109 +1,152 @@
-import Map, {
-  Marker,
-  NavigationControl,
-  GeolocateControl,
-  ScaleControl,
-  Source,
-  Layer,
-} from "react-map-gl/maplibre";
-import "./Map.css";
-import geoJSON from "../../data/houses_of_bratislava.json";
-import MarkerComponent from "../Marker/Marker";
-import Geocoder from "components/Geocoder/Geocoder";
+import React, {useEffect} from "react";
+import mapboxgl from "mapbox-gl";
+import "mapbox-gl/dist/mapbox-gl.css";
 
-console.log(geoJSON);
+const MapComponent = () => {
+    useEffect(() => {
+        mapboxgl.accessToken =
+            "";
 
-const MapComponent = ({ data }) => {
-  // eslint-disable-next-line no-unused-vars
-  const change = (e) => {
-    console.log(e);
-  };
+        const map = new mapboxgl.Map({
+            container: "map",
+            style: "mapbox://styles/mapbox/light-v11",
+            center: [17.107, 48.145], // Змініть ці координати на бажані
+            zoom: 15.5,
+            pitch: 45,
+            bearing: -17.6,
+            antialias: true,
+        });
 
-  const numberParse = (number) => {
-    let parsedNumber;
 
-    parsedNumber = parseFloat(number);
+        map.on("load", () => {
 
-    return parsedNumber;
-  };
+            const layers = map.getStyle().layers;
+            const labelLayerId = layers.find(
+                (layer) => layer.type === "symbol" && layer.layout["text-field"]
+            ).id;
 
-  // const staticPolygonData = {
-  //   type: "Feature",
-  //   geometry: {
-  //     type: "Polygon",
-  //     coordinates: [
-  //       [
-  //         [17.107, 48.145],
-  //         [17.108, 48.145],
-  //         [17.108, 48.146],
-  //         [17.107, 48.146],
-  //         [17.107, 48.145],
-  //       ],
-  //     ],
-  //   },
-  //   properties: {},
-  // };
+            map.addLayer(
+                {
+                    id: "3d-buildings",
+                    source: "composite",
+                    "source-layer": "building",
+                    filter: ["==", "extrude", "true"],
+                    type: "fill-extrusion",
+                    minzoom: 15,
+                    paint: {
+                        "fill-extrusion-color": "#aaa",
+                        "fill-extrusion-height": [
+                            "interpolate",
+                            ["linear"],
+                            ["zoom"],
+                            15,
+                            0,
+                            15.05,
+                            ["get", "height"],
+                        ],
+                        "fill-extrusion-base": [
+                            "interpolate",
+                            ["linear"],
+                            ["zoom"],
+                            15,
+                            0,
+                            15.05,
+                            ["get", "min_height"],
+                        ],
+                        "fill-extrusion-opacity": 0.6,
+                    },
+                },
+                labelLayerId
+            );
 
-  return (
-    <Map
-      initialViewState={{
-        longitude: 17.107,
-        latitude: 48.145,
-        zoom: 14,
-      }}
-      doubleClickZoom={false}
-      mapStyle="https://api.maptiler.com/maps/streets-v2/style.json?key=jkyOg7nIBllWn5tcjnsS"
-      style={{ width: "100%", height: 900 }}
-    >
-      {/* <Source id="static-polygon" type="geojson" data={staticPolygonData}>
-        <Layer
-          id="static-polygon-layer"
-          type="fill"
-          paint={{
-            "fill-color": "#088",
-            "fill-opacity": 0.5,
-          }}
-        />
-      </Source> */}
-      {/* {data.length > 0 &&
-        data.map((el) => (
-          <Marker
-            key={el.id}
-            longitude={numberParse(el.geoPoints.longitude)}
-            latitude={numberParse(el.geoPoints.latitude)}
-            anchor="bottom"
-          >
-            <MarkerComponent
-              longitude={numberParse(el.geoPoints.longitude)}
-              latitude={numberParse(el.geoPoints.latitude)}
-              price={el.price}
-              address={el.title}
-            />
-          </Marker>
-        ))} */}
-      {geoJSON.features
-        .filter((el) => el.geoPoints)
-        .map((el) => (
-          <Marker
-            key={el.id}
-            longitude={numberParse(el.geoPoints.longitude)}
-            latitude={numberParse(el.geoPoints.latitude)}
-            anchor="bottom"
-          >
-            <MarkerComponent
-              longitude={numberParse(el.geoPoints.longitude)}
-              latitude={numberParse(el.geoPoints.latitude)}
-              price={el.price}
-              address={el.title}
-            />
-          </Marker>
-        ))}
-      <Geocoder position="top-left" />
-      <GeolocateControl />
-      <NavigationControl />
-      <ScaleControl />
-    </Map>
-  );
+            // setTimeout(() => {
+                const longitude = 17.1047098672259;
+                const latitude = 48.1027321;
+
+                var point = map.project([longitude, latitude]);
+                console.log(point);
+
+
+                const marker = new mapboxgl.Marker()
+                    .setLngLat([longitude, latitude]) // Встановлюємо координати маркера
+                    .addTo(map); // Додаємо маркер на карту
+
+                const features = map.queryRenderedFeatures(
+                   point,
+                    {layers: ['3d-buildings']}
+                );
+
+
+                console.log(features);
+                if (!features.length) {
+                    console.log("No features found at this location.");
+                    return null;
+                }
+                //////////////////////////////////////////////////////////////////////
+                var buildId = 169621165;
+                ////////////////////////////////////////////////////
+                //aaadress
+                // var coordinates = features[0].geometry.coordinates;
+                // var z = features[0]._z;
+                //////////////////////////////////////////////////////////////////////
+                //      1)
+            map.addLayer({
+                    id: 'highlighted-building',
+                    type: 'fill-extrusion',
+                    source: 'composite',
+                    'source-layer': 'building',
+                    paint: {
+                        'fill-extrusion-color': '#ff0000',
+                        'fill-extrusion-height': ['get', 'height'],
+                        'fill-extrusion-base': ['get', 'min_height'],
+                        'fill-extrusion-opacity': 0.8
+                    },
+                    filter: ['==', ['id'],buildId ]
+                });
+
+                // Inside the useEffect block
+
+
+                //2
+                //Повернути назад геометрію у вигляді масиву координат і висоту _z
+
+            // }, 1000)
+            console.log(map.getLayer("highlighted-building"));
+            var layer1 = map.getLayer("highlighted-building");
+
+
+        })
+        map.on("click", function (e) {
+            const features = map.queryRenderedFeatures(e.point, {
+                layers: ["3d-buildings"]
+            });
+            console.log(features)
+            if (!features.length) {
+                console.log("No features found at this location.");
+                return;
+            }
+
+            const buildingFeature = features[0];
+            const buildingId = buildingFeature.id; // Make sure "id" is the correct property name
+            console.log(features[0].geometry.coordinates);
+
+            console.log("Building ID:", buildingId);
+        });
+    }, []);
+
+    return (
+        <div>
+            <div
+                id="map"
+                style={{
+                    position: "absolute",
+                    top: 0,
+                    bottom: 0,
+                    width: "100%",
+                }}
+            ></div>
+        </div>
+    );
 };
 
 export default MapComponent;
