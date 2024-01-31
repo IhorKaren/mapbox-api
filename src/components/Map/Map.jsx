@@ -14,6 +14,7 @@ const MapComponent = () => {
             style: "https://api.maptiler.com/maps/streets-v2/style.json?key=jkyOg7nIBllWn5tcjnsS",
         });
 
+
         map.on("load", () => {
             const layers = map.getStyle().layers;
             const labelLayerId = layers.find(
