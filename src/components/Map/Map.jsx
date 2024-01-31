@@ -43,6 +43,14 @@ const MapComponent = () => {
                 },
             );
         });
+        map.on('idle', (ev) => {
+            var queryRenderedFeatures1 = map.queryRenderedFeatures({layers: ['buildings-3d']});
+            if (queryRenderedFeatures1.length > 0) {
+                console.log(queryRenderedFeatures1[0].id);
+                console.log(queryRenderedFeatures1[0].geometry.coordinates);
+            }
+        })
+
     }, []);
 
     return (
