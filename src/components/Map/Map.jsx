@@ -11,29 +11,6 @@ import geoJSON from "../../data/houses_of_bratislava.json";
 import MarkerComponent from "../Marker/Marker";
 import Geocoder from "components/Geocoder/Geocoder";
 
-const geojson = {
-  type: "vector",
-  url: "https://api.maptiler.com/tiles/v3/tiles.json?key=jkyOg7nIBllWn5tcjnsS",
-};
-
-const buildId = 230491553;
-
-const parkLayer = {
-  id: "buildings-3d",
-  type: "fill-extrusion",
-  source: "openmaptiles",
-  "source-layer": "building",
-  metadata: {},
-  minzoom: 14,
-  filter: ["==", ["id"], buildId],
-  paint: {
-    "fill-extrusion-color": "#ff0000",
-    "fill-extrusion-height": ["get", "render_height"],
-    "fill-extrusion-base": ["get", "render_min_height"],
-    "fill-extrusion-opacity": 0.3,
-  },
-};
-
 const MapComponent = ({ data }) => {
   // eslint-disable-next-line no-unused-vars
   const change = (e) => {
@@ -46,6 +23,24 @@ const MapComponent = ({ data }) => {
     parsedNumber = parseFloat(number);
 
     return parsedNumber;
+  };
+
+  const addLayer = (buildId) => {
+    return (
+      <Layer
+        id="buildings-3d"
+        type="fill-extrusion"
+        source="openmaptiles"
+        source-layer="building"
+        filter={["==", ["id"], buildId]}
+        paint={{
+          "fill-extrusion-color": "#ff0000",
+          "fill-extrusion-height": ["get", "render_height"],
+          "fill-extrusion-base": ["get", "render_min_height"],
+          "fill-extrusion-opacity": 0.3,
+        }}
+      />
+    );
   };
 
   return (
@@ -76,10 +71,12 @@ const MapComponent = ({ data }) => {
             />
           </Marker>
         ))}
-
-      <Source id="my-data" type="geojson" data={geojson}>
-        <Layer {...parkLayer} />
-      </Source>
+      <Source
+        id="openmaptiles"
+        type="vector"
+        url="https://api.maptiler.com/tiles/v3/tiles.json?key=jkyOg7nIBllWn5tcjnsS"
+      />
+      {addLayer(230491553)}
       <Geocoder position="top-left" />
       <GeolocateControl />
       <NavigationControl />
