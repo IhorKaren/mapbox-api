@@ -1,3 +1,4 @@
+import React, { useRef } from "react";
 import Map, {
   Marker,
   NavigationControl,
@@ -12,9 +13,28 @@ import MarkerComponent from "../Marker/Marker";
 import Geocoder from "components/Geocoder/Geocoder";
 
 const MapComponent = ({ data }) => {
-  // eslint-disable-next-line no-unused-vars
-  const change = (e) => {
-    console.log(e);
+  const mapRef = useRef(null);
+
+  const change = () => {
+    if (mapRef.current) {
+      const bounds = mapRef.current.getMap().getBounds();
+
+      const filtered = geoJSON.features.filter((el) => el.geoPoints);
+
+      const filteredArray = filtered.filter((el) => {
+        let lat = parseFloat(el.geoPoints.latitude);
+        let lng = parseFloat(el.geoPoints.longitude);
+
+        return (
+          lat >= bounds._sw.lat &&
+          lat <= bounds._ne.lat &&
+          lng >= bounds._sw.lng &&
+          lng <= bounds._ne.lng
+        );
+      });
+
+      console.log(filteredArray);
+    }
   };
 
   const numberParse = (number) => {
@@ -45,6 +65,7 @@ const MapComponent = ({ data }) => {
 
   return (
     <Map
+      ref={mapRef}
       initialViewState={{
         longitude: 17.107,
         latitude: 48.145,
@@ -53,6 +74,7 @@ const MapComponent = ({ data }) => {
       doubleClickZoom={false}
       mapStyle="https://api.maptiler.com/maps/streets-v2/style.json?key=jkyOg7nIBllWn5tcjnsS"
       style={{ width: "100%", height: 900 }}
+      onDragEnd={change}
     >
       {geoJSON.features
         .filter((el) => el.geoPoints)
